@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+           Django App
+        {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <script src=" {% static "js/main.js" %} " defer></script>
+</head>
+<body>
+    <nav>
+        {% if user.is_authenticated %}
+        <a href="/" aria-label='Home'>Home 🏠</a>  |
+        <a href="/about" aria-label='About'>About 🤔</a> |
+        <a href='{% url "posts:list" %}' aria-label='Superheroes'>Contact 📲</a> |
+        <form action="{% url 'users:logout' %}"
+        class='logout' method='post'
+        >{% csrf_token %}
+        <button class='logout-button' ari-label='User Logout' title='User Logout' >Logout</button>
+        </form>  |
+        <a href='{% url "posts:new-post" %}' title='User' aria-label='New Post'>Create Post</a>  |
+        {% else %}
+         |<a href='{% url "users:register" %}' title='User Registration' aria-label='register'>Register 📲</a> |
+         <a href='{% url "users:login" %}' title='User' aria-label='User Login'>Login📲</a>
+        {% endif %}
+        
+         
+         
+        
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+    
+</body>
+</html>
