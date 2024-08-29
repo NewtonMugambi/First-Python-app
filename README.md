@@ -1,0 +1,1 @@
+This is my first django app It is a basic application with csrf token feature, where users can log in,log out and create accounts. The app has a feature where you can create posts, that is, after you`ve logged in. The posts include images,text and slug. This is a basic django app I uploaded for the sake of practice as a backend developer. Hope you enjoy the code
